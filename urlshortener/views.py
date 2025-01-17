@@ -33,7 +33,7 @@ def create_shortened_url(request):
 
 
 @extend_schema(
-    description="Foward shortened url to target url",
+    summary="Foward shortened url to target url",
 )
 @api_view(
     http_method_names=["GET"],
