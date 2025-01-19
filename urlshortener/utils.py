@@ -1,9 +1,15 @@
 import secrets
+from django.conf import settings
 from django.http import HttpRequest
 from string import ascii_letters, digits
 
 
 from .models import URL
+
+BASE_PAT = r"[a-zA-Z0-9]{%s}"
+
+KEY_PAT = BASE_PAT % settings.URL_KEY_LENGTH
+SECRET_KEY_PAT = KEY_PAT + "_" + (BASE_PAT % settings.URL_SECRET_KEY_LENGTH)
 
 CHARS = ascii_letters + digits
 
