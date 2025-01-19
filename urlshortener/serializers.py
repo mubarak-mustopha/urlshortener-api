@@ -1,3 +1,4 @@
+from django.conf import settings
 from rest_framework import serializers
 
 from .models import URL
@@ -34,8 +35,8 @@ class URLSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
         target_url = self.validated_data["target_url"]
-        key = generate_unique_key()
-        secret_key = f"{key}_{generate_key(8)}"
+        key = generate_unique_key(settings.URL_KEY_LENGTH)
+        secret_key = f"{key}_{generate_key(settings.URL_SECRET_KEY_LENGTH)}"
 
         self.instance = URL.objects.create(
             target_url=target_url, key=key, secret_key=secret_key

@@ -138,3 +138,8 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+
+# url model settings
+URL_KEY_LENGTH = 5
+URL_SECRET_KEY_LENGTH = 8
