@@ -41,6 +41,8 @@ def create_shortened_url(request):
 def forward_target_url(request, key) -> HttpResponseRedirect:
     # http://127.0.0.1:8000/Yfs62
     url: URL = get_object_or_404(URL, key=key)
+    url.clicks += 1
+    url.save()
     return HttpResponseRedirect(url.target_url)
 
 
